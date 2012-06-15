@@ -7,6 +7,9 @@ $harvest_account = ''; // The {myaccount} portion of your Harvest url: {myaccoun
 // number of working hours a day you want to measure against
 $working_hours_per_day = 7.5;
 
+// site title
+$site_title = 'Reloads Timetable King';
+
 // wanna track with Google Analytics? Enter your Account ID
 $ga_account_id = '';
 ?>

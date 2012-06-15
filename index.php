@@ -10,7 +10,7 @@ include('inc/functions.php');
 <head>
     <meta charset="utf-8">
 
-    <title>Kersvers Timetable King</title>
+    <title><?php echo $site_title; ?></title>
     <meta name="description" content="">
 
     <meta name="viewport" content="width=device-width">
