@@ -1,3 +1,7 @@
+<?php
+include('inc/settings.php');
+include('inc/functions.php');
+?>
 <!DOCTYPE html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
@@ -85,10 +89,13 @@
         </ul>
       </div>
         
+        <div id="detailed_data">
+          <p>Todays 100% productivity index: <?php echo getWorkingDays() * $working_hours_per_day; ?> hours</p>
+        </div>
     </div>
     
-    <script>var totalHours = <?php echo getWorkingDays('month') * 5; ?>;</script>
-    <script>var workedHours = <?php echo getWorkingDays() * 5; ?>;</script>
+    <script>var totalHours = <?php echo getWorkingDays('month') * $working_hours_per_day; ?>;</script>
+    <script>var workedHours = <?php echo getWorkingDays() * $working_hours_per_day; ?>;</script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.7.2.min.js"><\/script>')</script>
 
