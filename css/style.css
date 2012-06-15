@@ -418,8 +418,8 @@ strong {
   opacity: 0;
   filter: alpha(opacity=0);
   margin: 0 auto;
-  width: 430px;
-  padding-top: 80px;
+  width: 1050px;
+  padding-top: 50px;
 }
 #container .month {
   text-align: center;
@@ -546,7 +546,7 @@ strong {
 }
 #container #user_ranking {
   margin: 155px auto 0;
-  width: 390px;
+  width: 1050px;
   opacity: 0;
   filter: alpha(opacity=0);
   -webkit-transition: all 0.3s ease-out 0.3s;
@@ -568,8 +568,12 @@ strong {
   margin: -53px 0 0 -53px;
 }
 #container #user_ranking li {
-  *zoom: 1;
-  padding-bottom: 25px;
+  *zoom: 1;  
+  padding-bottom: 5px;
+  padding-right: 10px;
+  float: left;
+  height: 130px;
+  width: 340px;
 }
 #container #user_ranking li:before,
 #container #user_ranking li:after {
@@ -577,7 +581,8 @@ strong {
   content: "";
 }
 #container #user_ranking li:after {
-  clear: both;
+  /*clear: both;*/
+  
 }
 #container #user_ranking .user_avatar {
   float: left;
@@ -618,6 +623,12 @@ strong {
   -moz-border-radius: 50%;
   border-radius: 50%;
 }
+
+/* fallback color */
+#container #user_ranking .user_avatar .rank {
+  background-color: #666;
+}
+
 #container #user_ranking .user_avatar .rank.bg0 {
   background-color: #ef2876;
 }
@@ -627,6 +638,26 @@ strong {
 #container #user_ranking .user_avatar .rank.bg2 {
   background-color: #93bc00;
 }
+#container #user_ranking .user_avatar .rank.bg3 {
+  background-color: #000000;
+}
+#container #user_ranking .user_avatar .rank.bg4 {
+  background-color: #A66400;
+}
+#container #user_ranking .user_avatar .rank.bg5 {
+  background-color: #372F85;
+}
+#container #user_ranking .user_avatar .rank.bg6 {
+  background-color: #A61000;
+}
+#container #user_ranking .user_avatar .rank.bg7 {
+  background-color: #5F9900;
+}
+#container #user_ranking .user_avatar .rank.bg8 {
+  background-color: #890043;
+}
+
+
 #container #user_ranking h2 {
   color: #333333;
   font-size: 24px;
@@ -646,6 +677,16 @@ strong {
 .hide {
   display: none;
 }
+
+#container #detailed_data {
+  margin: 0 auto;
+  color: #EF2876;
+  text-transform: uppercase;
+  clear: both;
+  text-align: center;
+}
+
+
 /* ajax loader in css 3 */
 #ajaxloader
 {
