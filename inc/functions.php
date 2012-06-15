@@ -1,6 +1,6 @@
 <?php
   
-  function getWorkingDays($period)
+  function getWorkingDays($period = null)
   {
     $startDate = date('Y-m-01');
     
