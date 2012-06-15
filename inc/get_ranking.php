@@ -11,6 +11,8 @@ $harvest_pass = ''; // Your Harvest password
 $harvest_account = ''; // The {myaccount} portion of your Harvest url: {myaccount}.harvestapp.com
 // date_default_timezone_set('America/Los_Angeles'); // Set your timezone if it is not set in your php.ini
  
+include('settings.php'); // config 
+ 
 // Include the HarvestAPI class
 require_once 'HarvestAPI.php';
 // Register the HarvestAPI autoloader
