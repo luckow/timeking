@@ -34,6 +34,12 @@ function getEntries($harvestAPI) {
 
   foreach ($users->data as $user) {
     
+    if($user->get("is-contractor") == "true")
+    {
+      // ignore contractors, they do not play our game :-)
+      continue;
+    }
+
     $activity = $harvestAPI->getUserEntries($user->id, $range);
     $hours_per_week = 0;
     
