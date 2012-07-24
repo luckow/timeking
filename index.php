@@ -10,7 +10,7 @@ include('inc/functions.php');
 <head>
     <meta charset="utf-8">
 
-    <title><?php echo $site_title; ?></title>
+    <title><?php echo $config["site_title"]; ?></title>
     <meta name="description" content="">
 
     <meta name="viewport" content="width=device-width">
@@ -70,13 +70,8 @@ include('inc/functions.php');
         </ul>
       </div>
         
-        <div id="detailed_data">
-          <p>Todays 100% productivity index: <?php echo getWorkingDays() * $working_hours_per_day; ?> hours</p>
-        </div>
     </div>
     
-    <script>var totalHours = <?php echo getWorkingDays('month') * $working_hours_per_day; ?>;</script>
-    <script>var workedHours = <?php echo getWorkingDays() * $working_hours_per_day; ?>;</script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.7.2.min.js"><\/script>')</script>
 
@@ -84,9 +79,9 @@ include('inc/functions.php');
     <script src="js/main.js"></script>
     <!-- end scripts -->
 
-    <?php if(!empty($ga_account_id)): ?>
+    <?php if(!empty($config["ga_account_id"])): ?>
     <script>
-        var _gaq=[['_setAccount','<?php echo $ga_account_id; ?>'],['_trackPageview']];
+        var _gaq=[['_setAccount','<?php echo $config["ga_account_id"]; ?>'],['_trackPageview']];
         (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
         g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
         s.parentNode.insertBefore(g,s)}(document,'script'));
