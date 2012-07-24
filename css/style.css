@@ -497,7 +497,7 @@ strong {
 }
 #container #report_overview_hours .logged_hours {
   float: left;
-  font-size: 120px;
+  font-size: 110px;
   line-height: 120px;
   color: #005c70;
   height: 90px;
@@ -505,14 +505,14 @@ strong {
   text-align: right;
 }
 #container #report_overview_hours .logged_hours_desc {
-  float: left;
-  font-size: 52px;
+  float: right;
+  font-size: 41px;
   padding-top: 5px;
-  padding-left: 10px;
-  line-height: 46px;
+  padding-right: 10px;
+  line-height: 47px;
 }
 #container #report_overview_hours .logged_hours_desc span {
-  font-size: 44px;
+  font-size: 35px;
 }
 #container #hours_productive {
   display: inline-block;
@@ -605,6 +605,7 @@ strong {
   background-repeat: no-repeat;
   z-index: 55;
   overflow: visible;
+  opacity:0.6;
 }
 #container #user_ranking .user_avatar .rank {
   position: absolute;
@@ -629,6 +630,7 @@ strong {
   background-color: #666;
 }
 
+/*
 #container #user_ranking .user_avatar .rank.bg0 {
   background-color: #ef2876;
 }
@@ -656,7 +658,20 @@ strong {
 #container #user_ranking .user_avatar .rank.bg8 {
   background-color: #890043;
 }
+*/
 
+#container #user_ranking .user_avatar .rank.A-karmahunter {
+  background-color: #ef2876;
+}
+#container #user_ranking .user_avatar .rank.B-goalie {
+  background-color: #93bc00;
+}
+#container #user_ranking .user_avatar .rank.C-karmauser {
+  background-color: #009fe3;
+}
+#container #user_ranking .user_avatar .rank.D-slacker {
+  background-color: #000000;
+}
 
 #container #user_ranking h2 {
   color: #333333;
