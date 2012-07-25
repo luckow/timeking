@@ -43,9 +43,9 @@
   function determineRankingGroup($hours_registered, $hours_goal) {
     $performance = round($hours_registered/$hours_goal*100);
 
-    if($performance >= 105) {
+    if($performance >= 110) {
       $group = "A-karmahunter";
-    } elseif ($performance < 105 && $performance >= 95) {
+    } elseif ($performance < 110 && $performance >= 95) {
       $group = "B-goalie";
     } elseif ($performance < 95 && $performance >= 70) {
       $group = "C-karmauser";
