@@ -25,18 +25,22 @@ $harvestAPI->setPassword($config["harvest_pass"]);
 $harvestAPI->setAccount($config["harvest_account"]);
 
 function getEntries($harvestAPI, $config) {
-  
-  $range = new Harvest_Range(date('Ym01'), date('Ymd'));
-  
+
+  $date_start = strtotime('first day of this month');
+  $date_end   = strtotime("yesterday");
+  if($date_end < $date_start) $date_end = $date_start;
+
+  $range = new Harvest_Range(date('Ymd', $date_start), date('Ymd', $date_end));
+
   $users = $harvestAPI->getActiveUsers();
   $return = array();
-  
+
   $total_hours        = 0;
   $workdays_in_range  = getWorkingDays(); // until today
   $employees          = array();
 
   foreach ($users->data as $user) {
-    
+
     if($user->get("is-contractor") == "true")
     {
       // ignore contractors, they do not play our game :-)

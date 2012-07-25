@@ -2,19 +2,23 @@
   
   function getWorkingDays($period = null)
   {
-    $startDate = date('Y-m-01');
+    $date_start = strtotime('first day of this month');
+    $date_end   = strtotime("yesterday");
+    if($date_end < $date_start) $date_end = $date_start;
     
-    if($period == 'month') $endDate = date('Y-m-t');
-    else $endDate = date('Y-m-d');
+    if($period == 'month') {
+      $date_end   = strtotime("last day of this month");
+    }
+
+    $startDate = date('Y-m-d', $date_start);
+    $endDate = date('Y-m-d', $date_end);
 
     // Sets the Count
     $count = 0;
-    $startStt = strtotime($startDate);
-    $endStt = strtotime($endDate);
     // iterates through each day till the end day is back at the start date
-    while (date("Y-m-d", $startStt) <= date("Y-m-d",$endStt)){
-      $count = (date("w", $endStt) != 0 && date("w", $endStt) != 6) ? $count +1 : $count;
-      $endStt = $endStt - 86400;
+    while (date("Y-m-d", $date_start) <= date("Y-m-d",$date_end)){
+      $count = (date("w", $date_end) != 0 && date("w", $date_end) != 6) ? $count +1 : $count;
+      $date_end = $date_end - 86400;
     }
     return $count;
   }
