@@ -87,5 +87,17 @@ include('inc/functions.php');
         s.parentNode.insertBefore(g,s)}(document,'script'));
     </script>
     <?php endif; ?>
+
+    <script type="text/javascript">
+        window.onload = setupRefresh;
+
+        function setupRefresh() {
+          setTimeout("refreshPage();", 300000); // milliseconds - every 5 mins
+        }
+        function refreshPage() {
+           window.location = location.href;
+        }
+    </script>
+
 </body>
 </html>
