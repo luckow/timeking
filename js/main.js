@@ -11,11 +11,11 @@ var groups = {
     "icon": "★"}
   ],
   "B-goalie": [
-    {"text": "Arbejder derudaf, balancen er perfekt!",
-    "icon": "☯"} // "✓"
+    {"text": "Arbejder derudaf, rammer timerne perfekt. Sådan!",
+    "icon": "✓"} // "✓" "☯"
   ],
   "C-karmauser": [
-    {"text": "Trækker på karmakontoen. Arbejde er jo ikke alt :-)",
+    {"text": "Trækker på karmakontoen. Der er jo andet i livet end arbejde :-)",
     "icon": "☂"}
   ],
   "D-slacker": [
@@ -51,7 +51,7 @@ $(function(){
   		  // add an avatar
   		  _item.find('.user_avatar_holder').html($('<img src="img/avatar-'+data.ranking[i].name.toLowerCase().replace(/\s/g,'-')+'.png">'));
   		  
-  		  // Goalies gets the moustache 
+  		  // Goalies gets the moustache / hat
   		  if(data.ranking[i].group == "B-goalie") _item.find('.user_avatar').prepend($('<figure class="sir"></figure>'));
   		  
   		  // sets the ranking numbers and name
