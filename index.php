@@ -47,7 +47,7 @@ include('inc/functions.php');
         <div id="hours_productive">
           <h4></h4>
           <p class="perc">percent</p>
-          <p class="desc">productivity</p>
+          <p class="desc">accountability</p>
         </div>
         
       </div>
