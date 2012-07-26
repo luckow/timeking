@@ -508,7 +508,7 @@ strong {
   float: right;
   font-size: 41px;
   padding-top: 5px;
-  padding-right: 10px;
+  padding-right: 4px;
   line-height: 47px;
 }
 #container #report_overview_hours .logged_hours_desc span {
@@ -600,12 +600,12 @@ strong {
   -moz-border-radius: 0px;
   border-radius: 0px;
   border: 0;
-  background-image: url('../img/label-sir.png');
+  background-image: url('../img/label-sir-hat.png');
   background-position: 0px 0px;
   background-repeat: no-repeat;
   z-index: 55;
   overflow: visible;
-  opacity:0.6;
+  opacity:0.9;
 }
 #container #user_ranking .user_avatar .rank {
   position: absolute;
