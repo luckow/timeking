@@ -1,17 +1,31 @@
 <?php
-  
-  function getWorkingDays($period = null)
-  {
+
+  function getDateRange($period = null) {
     $date_start = strtotime('first day of this month');
     $date_end   = strtotime("yesterday");
-    if($date_end < $date_start) $date_end = $date_start;
-    
-    if($period == 'month') {
-      $date_end   = strtotime("last day of this month");
+
+    // check for first day of month, then show last months data
+    if($date_end < $date_start) {
+      // lets set the start date to the first day of last month
+      $date_start = strtotime('first day of last month');
+        //$date_end = $date_start;
     }
 
-    $startDate = date('Y-m-d', $date_start);
-    $endDate = date('Y-m-d', $date_end);
+    if($period == 'month') {
+      $date_end   = strtotime(sprintf("last day of %s",date("F",$date_start)));
+    }
+
+    $dates['start'] = $date_start;
+    $dates['end']   = $date_end;
+    return $dates;
+  }
+
+  function getWorkingDays($period = null)
+  {
+
+    $dates = getDateRange($period);
+    $date_start = $dates['start'];
+    $date_end   = $dates['end'];
 
     // Sets the Count
     $count = 0;

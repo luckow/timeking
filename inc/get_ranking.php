@@ -26,9 +26,10 @@ $harvestAPI->setAccount($config["harvest_account"]);
 
 function getEntries($harvestAPI, $config) {
 
-  $date_start = strtotime('first day of this month');
-  $date_end   = strtotime("yesterday");
-  if($date_end < $date_start) $date_end = $date_start;
+  $dates = getDateRange();
+
+  $date_start = $dates['start'];
+  $date_end   = $dates['end'];
 
   $range = new Harvest_Range(date('Ymd', $date_start), date('Ymd', $date_end));
 

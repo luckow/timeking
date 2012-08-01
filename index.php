@@ -32,7 +32,11 @@ include('inc/functions.php');
     
     <div id="container">
       
-      <p class="month"><?php echo date('F Y'); ?></p>
+      <p class="month">
+      <?php 
+      $dates = getDateRange();
+      echo date('F Y', $dates['start']); ?>
+      </p>
       
       <div id="report_overview">
         <p>So far This month</p>
