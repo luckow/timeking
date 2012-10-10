@@ -561,6 +561,7 @@ strong {
   display: inline-block;
   width: 106px;
   height: 106px;
+  background-image: url(../img/avatar-fallback.png);
 }
 #container #user_ranking figure img {
   position: absolute;
