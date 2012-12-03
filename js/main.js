@@ -20,7 +20,7 @@ var groups = {
   ],
   "D-slacker": [
     {"text": "Du mangler at registrere *meget* tid! Er du nu på ferie igen?!",
-    "icon": "✗"}
+    "icon": "☁"}
   ]         
 };
   
