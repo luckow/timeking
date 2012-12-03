@@ -39,15 +39,22 @@ function getEntries($harvestAPI, $config) {
   $total_hours        = 0;
   $workdays_in_range  = getWorkingDays(); // until today
   $employees          = array();
+  $first_workday      = getFirstWorkDay($date_start, $date_end, "Ymd");
 
   foreach ($users->data as $user) {
 
+    // ignore contractors, they do not play our game :-)
     if($user->get("is-contractor") == "true")
     {
-      // ignore contractors, they do not play our game :-)
       continue;
     }
     
+    // ignore newly created users, this game will not be fair for them
+    if(date("Ymd",strtotime($user->get("created-at"))) > $first_workday)  // timestamp 2012-12-02T09:57:33Z
+    {
+      continue;
+    }
+
     // this is a real user, count him in!
     $employees[] = $user;
 
@@ -92,6 +99,7 @@ $ranking = sortByOneKey($entries[1], 'group');
 
 $json = array();
 $json['succes'] = true;
+//$json['debug'] = date("Ymd",strtotime('first day of this month'));
 $json['hours_total_registered'] = $total;
 $json['hours_total_month']      = getActualWorkingHoursInRange($config,$employees,"month");
 $json['hours_until_today']      = getActualWorkingHoursInRange($config,$employees,null);

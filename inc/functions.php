@@ -4,11 +4,16 @@
     $date_start = strtotime('first day of this month');
     $date_end   = strtotime("yesterday");
 
-    // check for first day of month, then show last months data
-    if($date_end < $date_start) {
+    // check for first day of month (and if it's a monday), then show last months data
+    if(
+        $date_end < $date_start || 
+          (date("w") == 1 && date("j") < 4 && // today is a monday in the first 3 days of the month
+            (date("w", $date_start == 6) || date("w", $date_start == 0)) // and the startdate is sunday or saturday
+          )
+      ) {
       // lets set the start date to the first day of last month
       $date_start = strtotime('first day of last month');
-        //$date_end = $date_start;
+      $date_end = strtotime('last day of last month');
     }
 
     if($period == 'month') {
@@ -34,8 +39,27 @@
       $count = (date("w", $date_end) != 0 && date("w", $date_end) != 6) ? $count +1 : $count;
       $date_end = $date_end - 86400;
     }
+
     return $count;
   }
+  
+  function getFirstWorkDay($date_start, $date_end, $format = 'Ymd')
+  {
+    // Sets the Count
+    $count = 0;
+    $date_first = 0;
+    // iterates through each day till the end day is back at the start date
+    while (date("Y-m-d", $date_start) <= date("Y-m-d",$date_end)){
+      $count = (date("w", $date_end) != 0 && date("w", $date_end) != 6) ? $count +1 : $count;
+      $date_start = $date_start + 86400;
+      if($count > 0) {
+        $date_first = $date_start;
+        break;
+      }
+    }
+
+    return date($format, $date_start);
+  }  
 
   function getActualWorkingHoursInRange($config,$employees,$range = null) {
 
