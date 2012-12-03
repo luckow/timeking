@@ -59,9 +59,9 @@
 
     if($performance >= 110) {
       $group = "A-karmahunter";
-    } elseif ($performance < 110 && $performance >= 95) {
+    } elseif ($performance < 110 && $performance >= 98) {
       $group = "B-goalie";
-    } elseif ($performance < 95 && $performance >= 70) {
+    } elseif ($performance < 98 && $performance >= 70) {
       $group = "C-karmauser";
     } else {
       $group = "D-slacker";
