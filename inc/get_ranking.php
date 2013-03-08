@@ -1,16 +1,4 @@
 <?php
- 
-/**
- * Set your credentials here. You must be an admin on the Harvest account for
- * this to work properly. You may want to store this in a separate file and include
- * that file here.
- *   include('settings.php');
- */
-$harvest_user = ''; // Your Harvest username, usually an email address
-$harvest_pass = ''; // Your Harvest password
-$harvest_account = ''; // The {myaccount} portion of your Harvest url: {myaccount}.harvestapp.com
-// date_default_timezone_set('America/Los_Angeles'); // Set your timezone if it is not set in your php.ini
- 
 include('settings.php'); // config 
 include('functions.php'); 
 
@@ -73,6 +61,9 @@ function getEntries($harvestAPI, $config) {
     }
     
     $return[1][] = array(
+      // The user ID is split up to easily get the avatar URL for the users's Harvest account.
+      'user_id_first_part' => substr($user->id, 0, 3),
+      'user_id_second_part' => substr($user->id, 3),
       'name' => $user->first_name . " " . substr($user->last_name,0,1), 
       'hours_registered' => $hours_registered, 
       'hours_goal' => $hours_goal,
