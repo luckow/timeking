@@ -16,7 +16,7 @@ include('inc/functions.php');
     <meta name="viewport" content="width=device-width">
     <link rel="shortcut icon" href="favicon.ico">
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/main.css">
     <script src="js/vendor/modernizr-2.5.3.min.js"></script>
 </head>
 <body>
