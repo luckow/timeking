@@ -318,13 +318,13 @@ h3 {
   top: 0;
   left: 0;
 }
-/* line 54, scss/_user-ranking.scss */
-#user_ranking ul li:nth-child(2) .user_avatar .user_avatar_holder {
+/* line 55, scss/_user-ranking.scss */
+#user_ranking ul li.A-karmahunter .user_avatar .user_avatar_holder, #user_ranking ul li.B-goalie .user_avatar .user_avatar_holder {
   background-color: #cd9b0d;
   border-color: #f7d77c;
 }
-/* line 60, scss/_user-ranking.scss */
-#user_ranking ul li:nth-child(2):after {
+/* line 61, scss/_user-ranking.scss */
+#user_ranking ul li.A-karmahunter:after, #user_ranking ul li.B-goalie:after {
   content: "Champ";
   position: absolute;
   bottom: 8px;
@@ -340,8 +340,8 @@ h3 {
   box-shadow: 0 -1px 1px 0 rgba(0, 0, 0, 0.2), inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
 }
-/* line 75, scss/_user-ranking.scss */
-#user_ranking ul li:nth-child(2) .user_avatar:before {
+/* line 76, scss/_user-ranking.scss */
+#user_ranking ul li.A-karmahunter .user_avatar:before, #user_ranking ul li.B-goalie .user_avatar:before {
   content: "";
   display: block;
   position: absolute;
@@ -351,4 +351,18 @@ h3 {
   border-left: 48px solid transparent;
   border-right: 48px solid transparent;
   border-bottom: 48px solid #9d770a;
+}
+/* line 94, scss/_user-ranking.scss */
+#user_ranking ul li.B-goalie .user_avatar .user_avatar_holder {
+  background-color: #367763;
+  border-color: #3aaf8b;
+}
+/* line 100, scss/_user-ranking.scss */
+#user_ranking ul li.B-goalie:after {
+  content: "Boss";
+  background: #3aaf8b;
+}
+/* line 105, scss/_user-ranking.scss */
+#user_ranking ul li.B-goalie .user_avatar:before {
+  border-bottom-color: #265446;
 }

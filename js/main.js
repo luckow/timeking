@@ -67,7 +67,7 @@ $(function(){
         _item.find('h2').html(data.ranking[i].name);
   		  
   		  // winner and loser get a custom text, everybody else the default text
-  		  if(data.ranking[i].group == "B-goalie") _item.find('.hours').html('Like a boss!');
+  		  // if(data.ranking[i].group == "B-goalie") _item.find('.hours').html('Like a boss!');
   //		  else if(i == data.ranking.length-1) _item.find('.hours').html('Only <span>'+data.ranking[i].hours_registered+' hours logged</span>. What a whimp!');
   //		  else _item.find('.hours').html('<span>'+data.ranking[i].hours_registered+' hours logged</span>.');
   		  

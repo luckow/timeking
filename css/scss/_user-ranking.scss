@@ -46,8 +46,9 @@
                 }
             }
 
-            // Champ (no. 1)
-            &:nth-child(2) {
+            // Tags
+            &.A-karmahunter,
+            &.B-goalie {
 
                 // Avatar
                 .user_avatar {
@@ -84,6 +85,24 @@
                         border-bottom: 48px solid darken($yellow, 40%);
                 }
                 
+            }
+
+            &.B-goalie {
+                
+                // Avatar
+                .user_avatar {
+                    .user_avatar_holder {
+                        background-color: $darkGreen;
+                        border-color: $green;
+                    }
+                }            
+
+                &:after {
+                    content: "Boss";
+                    background: $green;
+                }
+
+                .user_avatar:before { border-bottom-color: darken($darkGreen, 10%); }
             }
         }
     }
