@@ -1,4 +1,14 @@
 <?php
+
+
+
+  // $user_id = str_split($uid, 3);
+
+  // echo $user_id[0];
+  //echo $user_id[1];
+?>
+
+<?php
 include('inc/settings.php');
 include('inc/functions.php');
 ?>
@@ -25,14 +35,11 @@ include('inc/functions.php');
          chromium.org/developers/how-tos/chrome-frame-getting-started -->
     <!--[if lt IE 7]><p class="chromeframe">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 
-    <div id="preloader">
-      <div id="ajaxloader"></div>
-      <p>Loading Harvest data...</p>
+    <div id="loader">
+      <h3><i class="thingy"></i> Snakker med Harvest</h3>
     </div>
-      
-    
-    <div id="container">
-      
+          
+  <div class="container">
       <p class="month">
       <?php 
       $dates = getDateRange();
@@ -97,10 +104,10 @@ include('inc/functions.php');
         window.onload = setupRefresh;
 
         function setupRefresh() {
-          setTimeout("refreshPage();", 300000); // milliseconds - every 5 mins
+        //  setTimeout("refreshPage();", 300000); // milliseconds - every 5 mins
         }
         function refreshPage() {
-           window.location = location.href;
+        //   window.location = location.href;
         }
     </script>
 

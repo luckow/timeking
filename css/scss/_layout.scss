@@ -1,0 +1,29 @@
+.container {
+    max-width: $containerWidth;
+    margin:0 auto;
+    padding: 0 4%;
+    outline: 1px solid $red;
+    opacity: 0;
+    @include transition(opacity 2000ms ease-in-out);
+
+    &.show { opacity: 1; }
+}
+
+.user {
+    width: 22%;
+    margin-right: 4%;
+    float: left;
+    height: 110px;
+
+    &:nth-child(5), 
+    &:nth-child(9), 
+    &:nth-child(13), 
+    &:nth-child(17), 
+    &:nth-child(21), 
+    &:nth-child(25), 
+    &:nth-child(29), 
+    &:nth-child(33), 
+    &:nth-child(37), 
+    &:nth-child(41), 
+    &:nth-child(45) { margin-right: 0; }
+}

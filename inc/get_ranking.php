@@ -59,13 +59,17 @@ function getEntries($harvestAPI, $config) {
     foreach ($activity->data as $entry) {
       $hours_registered += $entry->hours;
     }
+
+    // Getting user Harvest user id.
+    // Splitting it up to get retrieve Harvest avatar.
+    $user_id = "$user->id";
+    $user_id_parts = str_split($user_id, 3);
     
     $return[1][] = array(
-      // The user ID is split up to easily get the avatar URL for the users's Harvest account.
-      'user_id_first_part' => substr($user->id, 0, 3),
-      'user_id_second_part' => substr($user->id, 3),
-      'name' => $user->first_name . " " . substr($user->last_name,0,1), 
-      'hours_registered' => $hours_registered, 
+      'user_id_first_part' => $user_id_parts[0],
+      'user_id_second_part' => $user_id_parts[1],
+      'name' => $user->first_name, 
+      'hours_registered' => $hours_registered,  
       'hours_goal' => $hours_goal,
       'performance' => round($hours_registered/$hours_goal*100),
       'group' => determineRankingGroup($hours_registered, $hours_goal)
