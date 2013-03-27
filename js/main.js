@@ -31,14 +31,14 @@ $(function(){
 		
 		if (data.succes) {
 		
-      $('.container').addClass('show');
+      $('#report_overview, .container').addClass('show');
 		  $('#loader').addClass('hide');
   		
 		  
 		  // animate the timer
 		  timer_count($('.logged_hours'), Math.round(data.hours_total_registered));
 		  
-		  $('.hours_togo strong').html(Math.round(data.hours_total_month-data.hours_total_registered));
+		  $('.hours_togo span').html(Math.round(data.hours_total_month-data.hours_total_registered));
 		  $('#hours_productive h4').html(Math.round((data.hours_total_registered / data.hours_until_today)*100));
 		  
 		  $('#progress').delay(400).animate({width: ((Math.round(data.hours_total_registered) / (data.hours_total_month)) * 390) + 'px'}, 1000, 'easeOutExpo');

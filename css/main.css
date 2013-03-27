@@ -81,6 +81,8 @@ body {
 /* line 11, scss/_base.scss */
 body {
   background: #fff;
+  background: -webkit-gradient(linear, right top, right bottom, color-stop(50%, white), color-stop(100%, #e0f4ff));
+  background-attachment: fixed;
   color: #333333;
   padding: 0;
   margin: 0;
@@ -93,7 +95,7 @@ body {
   counter-reset: section;
 }
 
-/* line 27, scss/_base.scss */
+/* line 29, scss/_base.scss */
 img,
 object,
 embed {
@@ -101,18 +103,18 @@ embed {
   height: auto;
 }
 
-/* line 30, scss/_base.scss */
+/* line 32, scss/_base.scss */
 object,
 embed {
   height: 100%;
 }
 
-/* line 31, scss/_base.scss */
+/* line 33, scss/_base.scss */
 img {
   -ms-interpolation-mode: bicubic;
 }
 
-/* line 37, scss/_base.scss */
+/* line 39, scss/_base.scss */
 #map_canvas img,
 #map_canvas embed,
 #map_canvas object,
@@ -158,27 +160,27 @@ img {
   /* line 3, scss/_loader.scss */
   0%,
   20% {
-    background: #3aaf8b;
+    background-color: #3aaf8b;
   }
 
   /* line 4, scss/_loader.scss */
   40% {
-    background: #f7d77c;
+    background-color: #f7d77c;
   }
 
   /* line 5, scss/_loader.scss */
   60% {
-    background: #4fb1d7;
+    background-color: #4fb1d7;
   }
 
   /* line 6, scss/_loader.scss */
   80% {
-    background: #ea5f57;
+    background-color: #ea5f57;
   }
 
   /* line 7, scss/_loader.scss */
   100% {
-    background: #225d77;
+    background-color: #225d77;
   }
 }
 
@@ -199,13 +201,11 @@ img {
 #loader .thingy {
   -webkit-animation: color-pulse 800ms infinite linear;
   display: inline-block;
-  width: 1em;
-  height: 1em;
-  -webkit-border-radius: 2em 2em;
-  -moz-border-radius: 2em / 2em;
-  border-radius: 2em / 2em;
+  background-image: url(../img/reload-logo-inverted.png);
+  width: 40px;
+  height: 40px;
   position: relative;
-  bottom: -.15em;
+  bottom: -.4em;
   margin-right: .2em;
 }
 /* line 30, scss/_loader.scss */
@@ -223,26 +223,25 @@ img {
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 4%;
-  outline: 1px solid #ea5f57;
   opacity: 0;
   -webkit-transition: opacity 2000ms ease-in-out;
   -moz-transition: opacity 2000ms ease-in-out;
   -o-transition: opacity 2000ms ease-in-out;
   transition: opacity 2000ms ease-in-out;
 }
-/* line 9, scss/_layout.scss */
+/* line 8, scss/_layout.scss */
 .container.show {
   opacity: 1;
 }
 
-/* line 12, scss/_layout.scss */
+/* line 11, scss/_layout.scss */
 .user {
-  width: 22%;
-  margin-right: 4%;
+  width: 22.9%;
+  margin-right: 2.8%;
   float: left;
   height: 110px;
 }
-/* line 28, scss/_layout.scss */
+/* line 27, scss/_layout.scss */
 .user:nth-child(5), .user:nth-child(9), .user:nth-child(13), .user:nth-child(17), .user:nth-child(21), .user:nth-child(25), .user:nth-child(29), .user:nth-child(33), .user:nth-child(37), .user:nth-child(41), .user:nth-child(45) {
   margin-right: 0;
 }
@@ -271,6 +270,101 @@ h3 {
   font-size: 1.25em;
 }
 
+/* line 1, scss/_header.scss */
+#report_overview {
+  border-bottom: 4px solid #a2e0cd;
+  margin-bottom: 70px;
+  position: relative;
+  height: 112px;
+}
+
+/* line 8, scss/_header.scss */
+#logo {
+  float: left;
+  width: 62px;
+  height: 62px;
+  margin-top: 22px;
+  margin-right: 1em;
+  background: url(../img/reload-logo.png) -1px -1px no-repeat;
+  text-indent: -100%;
+}
+
+/* line 18, scss/_header.scss */
+#hours_productive {
+  background: #3aaf8b;
+  width: 150px;
+  height: 150px;
+  -webkit-border-radius: 150px 150px;
+  -moz-border-radius: 150px / 150px;
+  border-radius: 150px / 150px;
+  -webkit-box-shadow: inset 0 -2px 0 0 rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: inset 0 -2px 0 0 rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 -2px 0 0 rgba(0, 0, 0, 0.2);
+  text-align: center;
+  text-transform: uppercase;
+  position: absolute;
+  top: -10px;
+  right: 0;
+  padding-top: 36px;
+}
+/* line 32, scss/_header.scss */
+#hours_productive p {
+  font-size: .75em;
+  color: #2a443b;
+}
+/* line 37, scss/_header.scss */
+#hours_productive .percent {
+  font-size: 1.2em;
+  font-family: AsapBold, sans-serif;
+  color: #fff;
+}
+/* line 44, scss/_header.scss */
+#hours_productive h4 {
+  font-size: 3em;
+  color: #fff;
+  margin-bottom: 0;
+  line-height: .8;
+}
+
+/* line 52, scss/_header.scss */
+.logged_hours {
+  font-size: 5em;
+  font-family: AsapBold, sans-serif;
+  color: #225d77;
+  float: left;
+  margin-top: -2px;
+  margin-right: .15em;
+  letter-spacing: -.05em;
+}
+
+/* line 62, scss/_header.scss */
+.logged_hours_desc {
+  color: #225d77;
+  text-transform: uppercase;
+  float: left;
+  margin-top: 23px;
+  margin-right: 2em;
+}
+/* line 70, scss/_header.scss */
+.logged_hours_desc span {
+  font-size: 1.1em;
+  line-height: 1.2;
+  display: block;
+}
+/* line 76, scss/_header.scss */
+.logged_hours_desc span.date {
+  color: #4fb1d7;
+}
+
+/* line 81, scss/_header.scss */
+.remaining {
+  display: none;
+  font-family: AsapItalic;
+  font-size: 1.5em;
+  line-height: 1.2;
+  color: #afb3ba;
+}
+
 /* line 3, scss/_user-ranking.scss */
 #user_ranking ul li {
   margin-bottom: 2.5%;
@@ -280,28 +374,33 @@ h3 {
 #user_ranking ul li.hide {
   display: none;
 }
-/* line 10, scss/_user-ranking.scss */
-#user_ranking ul li h2:before {
-  counter-increment: section;
-  content: counter(section) ".";
-  margin-right: .15em;
-  font-family: AsapRegular, sans-serif;
-  color: #3aaf8b;
-}
 /* line 19, scss/_user-ranking.scss */
 #user_ranking ul li .rank {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  background: #4fb1d7;
+  color: #225d77;
   position: absolute;
+  top: -5px;
+  left: -5px;
+  line-height: 30px;
+  font-size: 1.25em;
+  -webkit-border-radius: 30px 30px;
+  -moz-border-radius: 30px / 30px;
+  border-radius: 30px / 30px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
 }
-/* line 24, scss/_user-ranking.scss */
+/* line 35, scss/_user-ranking.scss */
 #user_ranking ul li .user_info {
   padding-top: .3em;
   padding-left: 112px;
 }
-/* line 28, scss/_user-ranking.scss */
+/* line 39, scss/_user-ranking.scss */
 #user_ranking ul li .user_info .desc {
   font-size: .75em;
 }
-/* line 35, scss/_user-ranking.scss */
+/* line 46, scss/_user-ranking.scss */
 #user_ranking ul li .user_avatar .user_avatar_holder {
   width: 100px;
   height: 100px;
@@ -309,27 +408,22 @@ h3 {
   -webkit-border-radius: 100px 100px;
   -moz-border-radius: 100px / 100px;
   border-radius: 100px / 100px;
-  -webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.1);
-  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: -2px 0 0 rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: -2px 0 0 rgba(0, 0, 0, 0.1);
+  box-shadow: -2px 0 0 rgba(0, 0, 0, 0.1);
   border: 6px solid #3aaf8b;
   overflow: hidden;
   position: absolute;
   top: 0;
   left: 0;
 }
-/* line 55, scss/_user-ranking.scss */
-#user_ranking ul li.A-karmahunter .user_avatar .user_avatar_holder, #user_ranking ul li.B-goalie .user_avatar .user_avatar_holder {
-  background-color: #cd9b0d;
-  border-color: #f7d77c;
-}
 /* line 61, scss/_user-ranking.scss */
-#user_ranking ul li.A-karmahunter:after, #user_ranking ul li.B-goalie:after {
+#user_ranking ul li:after {
   content: "Champ";
   position: absolute;
-  bottom: 8px;
-  left: 2px;
-  width: 96px;
+  bottom: 10px;
+  left: -3px;
+  width: 106px;
   padding: 0.05em 0 0.1em;
   background: #f7d77c;
   text-align: center;
@@ -340,29 +434,81 @@ h3 {
   box-shadow: 0 -1px 1px 0 rgba(0, 0, 0, 0.2), inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
 }
-/* line 76, scss/_user-ranking.scss */
-#user_ranking ul li.A-karmahunter .user_avatar:before, #user_ranking ul li.B-goalie .user_avatar:before {
+/* line 77, scss/_user-ranking.scss */
+#user_ranking ul li .user_avatar:before {
   content: "";
   display: block;
   position: absolute;
-  bottom: 32px;
-  left: 2px;
+  bottom: 34px;
+  left: -3px;
   z-index: 0;
-  border-left: 48px solid transparent;
-  border-right: 48px solid transparent;
-  border-bottom: 48px solid #9d770a;
+  border-left: 53px solid transparent;
+  border-right: 53px solid transparent;
+  border-bottom: 53px solid #9d770a;
 }
-/* line 94, scss/_user-ranking.scss */
-#user_ranking ul li.B-goalie .user_avatar .user_avatar_holder {
-  background-color: #367763;
-  border-color: #3aaf8b;
+/* line 91, scss/_user-ranking.scss */
+#user_ranking ul li.A-karmahunter:after {
+  content: "Champ";
+  background: #f7d77c;
 }
-/* line 100, scss/_user-ranking.scss */
+/* line 92, scss/_user-ranking.scss */
+#user_ranking ul li.A-karmahunter .user_avatar:before {
+  border-bottom-color: #cd9b0d;
+}
+/* line 95, scss/_user-ranking.scss */
+#user_ranking ul li.A-karmahunter .user_avatar .user_avatar_holder {
+  background-color: #cd9b0d;
+  border-color: #f7d77c;
+}
+/* line 101, scss/_user-ranking.scss */
+#user_ranking ul li.A-karmahunter .user_avatar .rank {
+  background: #f7d77c;
+  color: #9d770a;
+}
+/* line 110, scss/_user-ranking.scss */
 #user_ranking ul li.B-goalie:after {
-  content: "Boss";
+  content: "Like a boss";
+  background: #4fb1d7;
+}
+/* line 111, scss/_user-ranking.scss */
+#user_ranking ul li.B-goalie .user_avatar:before {
+  border-bottom-color: #1a5a73;
+}
+/* line 114, scss/_user-ranking.scss */
+#user_ranking ul li.B-goalie .user_avatar .user_avatar_holder {
+  background-color: #1a5a73;
+  border-color: #4fb1d7;
+}
+/* line 123, scss/_user-ranking.scss */
+#user_ranking ul li.C-karmauser:after {
+  content: "Steady Eddie";
   background: #3aaf8b;
 }
-/* line 105, scss/_user-ranking.scss */
-#user_ranking ul li.B-goalie .user_avatar:before {
-  border-bottom-color: #265446;
+/* line 124, scss/_user-ranking.scss */
+#user_ranking ul li.C-karmauser .user_avatar:before {
+  border-bottom-color: #143c30;
+}
+/* line 128, scss/_user-ranking.scss */
+#user_ranking ul li.C-karmauser .user_avatar .rank {
+  background: #3aaf8b;
+  color: #2a443b;
+}
+/* line 137, scss/_user-ranking.scss */
+#user_ranking ul li.D-slacker:after {
+  content: "Just chillin'";
+  background: gray;
+}
+/* line 138, scss/_user-ranking.scss */
+#user_ranking ul li.D-slacker .user_avatar:before {
+  border-bottom-color: #404040;
+}
+/* line 141, scss/_user-ranking.scss */
+#user_ranking ul li.D-slacker .user_avatar .user_avatar_holder {
+  background-color: #4d4d4d;
+  border-color: gray;
+}
+/* line 147, scss/_user-ranking.scss */
+#user_ranking ul li.D-slacker .user_avatar .rank {
+  background: gray;
+  color: #404040;
 }

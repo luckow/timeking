@@ -39,27 +39,29 @@ include('inc/functions.php');
       <h3><i class="thingy"></i> Snakker med Harvest</h3>
     </div>
           
-  <div class="container">
-      <p class="month">
-      <?php 
-      $dates = getDateRange();
-      echo date('F Y', $dates['start']); ?>
-      </p>
-      
+  <div class="container">      
       <div id="report_overview">
-        <p>So far This month</p>
+          <div id="logo">Reload!</div>
+
           <div id="report_overview_hours">
           	<figure id="progress"></figure>
-            <p class="logged_hours"></p>
-            <p class="logged_hours_desc">hours<br><span>logged</span></p>
+            <p class="logged_hours">?</p>
+            <p class="logged_hours_desc">
+              <span>Timer er logget</span>
+              <span>denne m&aring;ned</span>
+              <span class="date"><?php $dates = getDateRange(); echo date('F Y', $dates['start']); ?></span>
+            </p>
           </div>
-        <p class="label">Which means</p>
-        <p class="hours_togo">only <strong></strong> to go!</p>
+
+          <div class="remaining">
+            <p class="label">Det betyder, at der kun er</p>
+            <p class="hours_togo"><span>?</span> timer tilbage!</p>
+          </div>
         
         <div id="hours_productive">
-          <h4></h4>
-          <p class="perc">percent</p>
-          <p class="desc">accountability</p>
+          <h4>?</h4>
+          <p class="percent">procent</p>
+          <p class="description">rapporteret</p>
         </div>
         
       </div>

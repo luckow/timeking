@@ -10,6 +10,8 @@ body { font-size: $fontSize; }
 // Default body styles
 body {
   background: #fff;
+  background: -webkit-gradient(linear, right top, right bottom, color-stop(50%,#ffffff), color-stop(100%,#e0f4ff));
+  background-attachment: fixed;
   color: $bodyFontColor;
   padding: 0;
   margin: 0;
@@ -34,6 +36,5 @@ img { -ms-interpolation-mode: bicubic; }
 .map_canvas {
   img,
   embed,
-  object { max-width: none !important;
-  }
+  object { max-width: none !important; }
 }

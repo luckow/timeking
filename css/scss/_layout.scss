@@ -2,7 +2,6 @@
     max-width: $containerWidth;
     margin:0 auto;
     padding: 0 4%;
-    outline: 1px solid $red;
     opacity: 0;
     @include transition(opacity 2000ms ease-in-out);
 
@@ -10,8 +9,8 @@
 }
 
 .user {
-    width: 22%;
-    margin-right: 4%;
+    width: 22.9%;
+    margin-right: 2.8%;
     float: left;
     height: 110px;
 
