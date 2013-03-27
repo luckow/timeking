@@ -106,10 +106,10 @@ include('inc/functions.php');
         window.onload = setupRefresh;
 
         function setupRefresh() {
-        //  setTimeout("refreshPage();", 300000); // milliseconds - every 5 mins
+          setTimeout("refreshPage();", 300000); // milliseconds - every 5 mins
         }
         function refreshPage() {
-        //   window.location = location.href;
+          window.location = location.href;
         }
     </script>
 
