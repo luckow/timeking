@@ -1,16 +1,4 @@
 <?php
- 
-/**
- * Set your credentials here. You must be an admin on the Harvest account for
- * this to work properly. You may want to store this in a separate file and include
- * that file here.
- *   include('settings.php');
- */
-$harvest_user = ''; // Your Harvest username, usually an email address
-$harvest_pass = ''; // Your Harvest password
-$harvest_account = ''; // The {myaccount} portion of your Harvest url: {myaccount}.harvestapp.com
-// date_default_timezone_set('America/Los_Angeles'); // Set your timezone if it is not set in your php.ini
- 
 include('settings.php'); // config 
 include('functions.php'); 
 
@@ -71,10 +59,17 @@ function getEntries($harvestAPI, $config) {
     foreach ($activity->data as $entry) {
       $hours_registered += $entry->hours;
     }
+
+    // Getting user Harvest user id.
+    // Splitting it up to get retrieve Harvest avatar.
+    $user_id = "$user->id";
+    $user_id_parts = str_split($user_id, 3);
     
     $return[1][] = array(
-      'name' => $user->first_name . " " . substr($user->last_name,0,1), 
-      'hours_registered' => $hours_registered, 
+      'user_id_first_part' => $user_id_parts[0],
+      'user_id_second_part' => $user_id_parts[1],
+      'name' => $user->first_name, 
+      'hours_registered' => $hours_registered,  
       'hours_goal' => $hours_goal,
       'performance' => round($hours_registered/$hours_goal*100),
       'group' => determineRankingGroup($hours_registered, $hours_goal)

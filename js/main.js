@@ -31,13 +31,14 @@ $(function(){
 		
 		if (data.succes) {
 		
-		  $('#container').addClass('in');
-  		$('#preloader').stop().animate({opacity: 0}, 300);
+      $('#report_overview, .container').addClass('show');
+		  $('#loader').addClass('hide');
+  		
 		  
 		  // animate the timer
 		  timer_count($('.logged_hours'), Math.round(data.hours_total_registered));
 		  
-		  $('.hours_togo strong').html(Math.round(data.hours_total_month-data.hours_total_registered));
+		  $('.hours_togo span').html(Math.round(data.hours_total_month-data.hours_total_registered));
 		  $('#hours_productive h4').html(Math.round((data.hours_total_registered / data.hours_until_today)*100));
 		  
 		  $('#progress').delay(400).animate({width: ((Math.round(data.hours_total_registered) / (data.hours_total_month)) * 390) + 'px'}, 1000, 'easeOutExpo');
@@ -46,10 +47,16 @@ $(function(){
   		  
   		  // clone the existing markup
   		  var _item = $('li.hide').clone();
-  		  _item.removeClass('hide');
+        _item.removeClass('hide');
+        _item.addClass('user');
+  		  _item.addClass(data.ranking[i].group);
   		  
   		  // add an avatar
-  		  _item.find('.user_avatar_holder').html($('<img src="img/avatar-'+data.ranking[i].name.toLowerCase().replace(/\s/g,'-')+'.png">'));
+  		  _item.find('.user_avatar_holder').html($('<img src="https://assetcache.harvestapp.com/uploads/users/avatar/000/'+data.ranking[i].user_id_first_part+'/'+data.ranking[i].user_id_second_part+'/normal.jpg">'));
+        
+
+
+        
   		  
   		  // Goalies gets the moustache / hat
   		  if(data.ranking[i].group == "B-goalie") _item.find('.user_avatar').prepend($('<figure class="sir"></figure>'));
@@ -57,10 +64,10 @@ $(function(){
   		  // sets the ranking numbers and name
   		  //_item.find('.rank').addClass('bg'+i).html(i+1);
   		  _item.find('.rank').addClass(data.ranking[i].group).html(groups[data.ranking[i].group][0].icon);
-  		  _item.find('h2').html(data.ranking[i].name+'.');
+        _item.find('h2').html(data.ranking[i].name);
   		  
   		  // winner and loser get a custom text, everybody else the default text
-  		  if(data.ranking[i].group == "B-goalie") _item.find('.hours').html('Like a boss!');
+  		  // if(data.ranking[i].group == "B-goalie") _item.find('.hours').html('Like a boss!');
   //		  else if(i == data.ranking.length-1) _item.find('.hours').html('Only <span>'+data.ranking[i].hours_registered+' hours logged</span>. What a whimp!');
   //		  else _item.find('.hours').html('<span>'+data.ranking[i].hours_registered+' hours logged</span>.');
   		  

@@ -1,7 +1,18 @@
 <?php
+
+
+
+  // $user_id = str_split($uid, 3);
+
+  // echo $user_id[0];
+  //echo $user_id[1];
+?>
+
+<?php
 include('inc/settings.php');
 include('inc/functions.php');
 ?>
+
 <!DOCTYPE html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
@@ -16,7 +27,7 @@ include('inc/functions.php');
     <meta name="viewport" content="width=device-width">
     <link rel="shortcut icon" href="favicon.ico">
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/main.css">
     <script src="js/vendor/modernizr-2.5.3.min.js"></script>
 </head>
 <body>
@@ -24,34 +35,33 @@ include('inc/functions.php');
          chromium.org/developers/how-tos/chrome-frame-getting-started -->
     <!--[if lt IE 7]><p class="chromeframe">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 
-    <div id="preloader">
-      <div id="ajaxloader"></div>
-      <p>Loading Harvest data...</p>
+    <div id="loader">
+      <h3><i class="thingy"></i> Snakker med Harvest</h3>
     </div>
-      
-    
-    <div id="container">
-      
-      <p class="month">
-      <?php 
-      $dates = getDateRange();
-      echo date('F Y', $dates['start']); ?>
-      </p>
-      
+          
+  <div class="container">      
       <div id="report_overview">
-        <p>So far This month</p>
+          <div id="logo">Reload!</div>
+
           <div id="report_overview_hours">
           	<figure id="progress"></figure>
-            <p class="logged_hours"></p>
-            <p class="logged_hours_desc">hours<br><span>logged</span></p>
+            <p class="logged_hours">?</p>
+            <p class="logged_hours_desc">
+              <span>Timer er logget</span>
+              <span>denne m&aring;ned</span>
+              <span class="date"><?php $dates = getDateRange(); echo date('F Y', $dates['start']); ?></span>
+            </p>
           </div>
-        <p class="label">Which means</p>
-        <p class="hours_togo">only <strong></strong> to go!</p>
+
+          <div class="remaining">
+            <p class="label">Det betyder, at der kun er</p>
+            <p class="hours_togo"><span>?</span> timer tilbage!</p>
+          </div>
         
         <div id="hours_productive">
-          <h4></h4>
-          <p class="perc">percent</p>
-          <p class="desc">accountability</p>
+          <h4>?</h4>
+          <p class="percent">procent</p>
+          <p class="description">rapporteret</p>
         </div>
         
       </div>
@@ -99,7 +109,7 @@ include('inc/functions.php');
           setTimeout("refreshPage();", 300000); // milliseconds - every 5 mins
         }
         function refreshPage() {
-           window.location = location.href;
+          window.location = location.href;
         }
     </script>
 

@@ -1,0 +1,36 @@
+// Colors
+$green:           #3AAF8B;
+$darkGreen:       #367763;
+$darkerGreen:     #2A443B;
+$blue:            #4FB1D7;
+$darkerBlue:      #225D77;
+$lightYellow:     #FEEDC2;
+$yellow:          #F7D77C;
+$red:             #EA5F57;
+$black:           #333;
+$lightGray:       #BDC0C6;
+
+// Settings
+$fontSize:         16px;
+$bodyFontColor:    #333;
+$bodyLineHeight:   1.4;
+$bodyFontFamily:   AsapRegular, sans-serif;
+$headerFontColor:  $darkerGreen;
+$headerFontFamily: AsapBold, sans-serif;
+$containerWidth:   1400px;
+
+// Imports
+@import "compass/reset";
+@import "compass/css3/border-radius";
+@import "compass/css3/box-shadow";
+@import "compass/css3/box-sizing";
+@import "compass/css3/transition";
+@import "compass/css3/text-shadow";
+@import "compass/utilities/general/clearfix";
+@import "base";
+@import "fonts";
+@import "loader";
+@import "layout";
+@import "typography";
+@import "header";
+@import "user-ranking";
