@@ -52,7 +52,7 @@ $(function(){
   		  _item.addClass(data.ranking[i].group);
   		  
   		  // add an avatar
-  		  _item.find('.user_avatar_holder').html($('<img src="https://assetcache.harvestapp.com/uploads/users/avatar/000/'+data.ranking[i].user_id_first_part+'/'+data.ranking[i].user_id_second_part+'/normal.jpg">'));
+  		  _item.find('.user_avatar_holder').html($('<img src="https://assetcache.harvestapp.com/uploads/users/avatar/'+data.ranking[i].user_id_first_part+'/'+data.ranking[i].user_id_second_part+'/'+data.ranking[i].user_id_third_part+'/normal.jpg">'));
         
 
 

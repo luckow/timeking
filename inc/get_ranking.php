@@ -62,12 +62,15 @@ function getEntries($harvestAPI, $config) {
 
     // Getting user Harvest user id.
     // Splitting it up to get retrieve Harvest avatar.
-    $user_id = "$user->id";
+    $user_id = strval($user->id);
+    $user_id = str_pad($user_id, 9, "0", STR_PAD_LEFT);
+
     $user_id_parts = str_split($user_id, 3);
     
     $return[1][] = array(
-      'user_id_first_part' => $user_id_parts[0],
-      'user_id_second_part' => $user_id_parts[1],
+      'user_id_first_part' => (string)$user_id_parts[0],
+      'user_id_second_part' => (string)$user_id_parts[1],
+      'user_id_third_part' => (string)$user_id_parts[2],
       'name' => $user->first_name, 
       'hours_registered' => $hours_registered,  
       'hours_goal' => $hours_goal,
