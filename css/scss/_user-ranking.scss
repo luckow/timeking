@@ -107,33 +107,45 @@
 
             // Like a Boss
             &.B-goalie {
-                &:after { content: "Like a boss"; background: $blue; }
-                .user_avatar:before { border-bottom-color: darken($blue, 30%); }
+                &:after { content: "Like a boss"; background: $green; }
+                .user_avatar:before { border-bottom-color: darken($green, 30%); }
                 
                 .user_avatar {
                     .user_avatar_holder {
-                        background-color: darken($blue, 30%);
-                        border-color: $blue;
+                        background-color: darken($green, 30%);
+                        border-color: $green;
+                    }
+
+
+                    // Rank icon
+                    .rank {
+                        background: $green;
+                        color: darken($green, 40%);
                     }
                 }
             }
 
-            // Steady Eddie
-            &.C-karmauser {
-                &:after { content: "Steady Eddie"; background: $green; }
-                .user_avatar:before { border-bottom-color: darken($green, 30%); }
+            // Slacking!
+            &.D-slacker {
+                &:after { content: "Slacking"; background: $red; }
+                .user_avatar:before { border-bottom-color: darken($red, 30%); }
 
                 // Rank icon
                 .user_avatar {
+                    .user_avatar_holder {
+                        background-color: $red;
+                        border-color: $red;
+                    }
+
                     .rank {
-                        background: $green;
-                        color: $darkerGreen;
+                        background: $red;
+                        color: $black;
                     }
                 }
             }            
 
             // Just chillin'
-            &.D-slacker {
+            &.C-karmauser {
                 &:after { content: "Just chillin'"; background: lighten($black, 30%); }
                 .user_avatar:before { border-bottom-color: lighten($black, 5%); }
 
