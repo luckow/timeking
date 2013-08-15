@@ -1,16 +1,26 @@
 <?php
-
-
-
-  // $user_id = str_split($uid, 3);
-
-  // echo $user_id[0];
-  //echo $user_id[1];
-?>
-
-<?php
 include('inc/settings.php');
 include('inc/functions.php');
+
+// fetch dates
+$dates  = getDateRange();
+
+$year   = null;
+$month  = null; 
+
+if($validURLDates = getDateFromURL())
+{
+  $year   = date('Y',$validURLDates['start']);
+  $month  = date('F',$validURLDates['start']);
+}
+
+$nextMonth  = strtotime(date('F',$dates['start']) . ' + 1 month');
+$nextYear   = strtotime(date('Y',$dates['start']) . ' + 1 month');
+$nextLink   = "?year=".date('Y',$nextYear)."&month=".date('F',$nextMonth);
+
+$prevMonth  = strtotime(date('F',$dates['start']) . ' last month');
+$prevYear   = strtotime(date('Y',$dates['start']) . ' last month');
+$prevLink   = "?year=".date('Y',$prevYear)."&month=".date('F',$prevMonth);
 ?>
 
 <!DOCTYPE html>
@@ -49,7 +59,7 @@ include('inc/functions.php');
             <p class="logged_hours_desc">
               <span>Timer er logget</span>
               <span>denne m&aring;ned</span>
-              <span class="date"><?php $dates = getDateRange(); echo date('F Y', $dates['start']); ?></span>
+              <span class="date" year="<?php echo htmlspecialchars($year); ?>" month="<?php echo htmlspecialchars($month); ?>"><?php echo date('F Y', $dates['start']); ?> <a href='<?php echo $prevLink; ?>'>&lt;</a> <a href='<?php echo $nextLink; ?>'>&gt;</a></span>
             </p>
           </div>
 

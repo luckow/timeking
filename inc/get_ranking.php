@@ -7,10 +7,15 @@ require_once 'HarvestAPI.php';
 // Register the HarvestAPI autoloader
 spl_autoload_register(array('HarvestAPI', 'autoload'));
 
-// check for cache
-$cacheFile = getcwd() . '/cache/json.cache';
+// fetch date range
+$dates    = getDateRange();
+$dateStart  = date('Ymd', $dates['start']);
+$dateEnd    = date('Ymd', $dates['end']);
 
-if(file_exists($cacheFile) && filemtime($cacheFile) > (time()-300))
+// check for cache
+$cacheFile = getcwd() . '/cache/json_'.$dateStart.'-'.$dateEnd.'.cache';
+
+if(file_exists($cacheFile) && filemtime($cacheFile) > (time()-600))
 {
   // cache is valid
   $encodedJson = file_get_contents($cacheFile);
@@ -40,6 +45,8 @@ $json['succes'] = true;
 $json['hours_total_registered'] = $total;
 $json['hours_total_month']      = getActualWorkingHoursInRange($config,$employees,"month");
 $json['hours_until_today']      = getActualWorkingHoursInRange($config,$employees,null);
+$json['date_start']             = $dates['start'];
+$json['date_end']               = $dates['end'];
 $json['ranking']                = $ranking;
 $json['timestamp']              = date("Ymd H:i:s",time());
 

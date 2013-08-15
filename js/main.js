@@ -26,7 +26,9 @@ var groups = {
   
 $(function(){
 	
-	$.post("inc/get_ranking.php", data, function(data) {
+ //alert($('span.date').attr('month'));
+
+	$.post("inc/get_ranking.php?year="+$('span.date').attr('year')+"&month="+$('span.date').attr('month'), data, function(data) {
 		
 		
 		if (data.succes) {
@@ -81,7 +83,7 @@ $(function(){
 			
 			
 		} else {
-				
+				//alert("Error! Data could not be retrieved");
 		}
 	},"json");
 	
