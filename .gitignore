@@ -2,3 +2,4 @@
 inc/settings.php
 inc/.DS_Store
 .DS_Store
+inc/cache/json.cache

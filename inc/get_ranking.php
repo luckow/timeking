@@ -6,89 +6,28 @@ include('functions.php');
 require_once 'HarvestAPI.php';
 // Register the HarvestAPI autoloader
 spl_autoload_register(array('HarvestAPI', 'autoload'));
- 
+
+// check for cache
+$cacheFile = getcwd() . '/cache/json.cache';
+
+if(file_exists($cacheFile) && filemtime($cacheFile) > (time()-300))
+{
+  // cache is valid
+  $encodedJson = file_get_contents($cacheFile);
+  if(!is_null($encodedJson) && !empty($encodedJson)) {
+    echo $encodedJson;
+    die();
+  }
+}
+
+// Cache did not check out or is too old
+// fetch new data
 $harvestAPI = new HarvestReports();
 $harvestAPI->setUser($config["harvest_user"]);
 $harvestAPI->setPassword($config["harvest_pass"]);
 $harvestAPI->setAccount($config["harvest_account"]);
 
-function getEntries($harvestAPI, $config) {
-
-  $dates = getDateRange();
-
-  $date_start = $dates['start'];
-  $date_end   = $dates['end'];
-
-  $range = new Harvest_Range(date('Ymd', $date_start), date('Ymd', $date_end));
-
-  $users = $harvestAPI->getActiveUsers();
-  $return = array();
-
-  $total_hours        = 0;
-  $workdays_in_range  = getWorkingDays(); // until today
-  $employees          = array();
-  $first_workday      = getFirstWorkDay($date_start, $date_end, "Ymd");
-
-  foreach ($users->data as $user) {
-
-    // ignore contractors, they do not play our game :-)
-    if($user->get("is-contractor") == "true")
-    {
-      continue;
-    }
-    
-    // ignore newly created users, this game will not be fair for them
-    if(date("Ymd",strtotime($user->get("created-at"))) > $first_workday)  // timestamp 2012-12-02T09:57:33Z
-    {
-      continue;
-    }
-
-    // this is a real user, count him in!
-    $employees[] = $user;
-
-    // determine optimal hours logged for this user
-    $hours_goal = $workdays_in_range * $config["working_hours_per_day"]["default"];
-    if(isset($config["working_hours_per_day"][$user->email]) && $config["working_hours_per_day"][$user->email] > 0) {
-      // we have a user defined daily working schedule
-       $hours_goal = $workdays_in_range * $config["working_hours_per_day"][$user->email];
-    }
-
-    $activity = $harvestAPI->getUserEntries($user->id, $range);
-    $hours_registered = 0;
-    
-    foreach ($activity->data as $entry) {
-      $hours_registered += $entry->hours;
-    }
-
-    // Getting user Harvest user id.
-    // Splitting it up to get retrieve Harvest avatar.
-    $user_id = strval($user->id);
-    $user_id = str_pad($user_id, 9, "0", STR_PAD_LEFT);
-
-    $user_id_parts = str_split($user_id, 3);
-    
-    $return[1][] = array(
-      'user_id_first_part' => (string)$user_id_parts[0],
-      'user_id_second_part' => (string)$user_id_parts[1],
-      'user_id_third_part' => (string)$user_id_parts[2],
-      'name' => $user->first_name, 
-      'hours_registered' => $hours_registered,  
-      'hours_goal' => $hours_goal,
-      'performance' => round($hours_registered/$hours_goal*100),
-      'group' => determineRankingGroup($hours_registered, $hours_goal)
-      );
-    $total_hours += $hours_registered;
-    
-  }
-  
-  $return[0] = round($total_hours);
-  $return[2] = $employees;
-  
-  return $return;
-  
-}
-
-$entries = getEntries($harvestAPI, $config);
+$entries = getEntries($harvestAPI, $config);  
 
 $total = $entries[0];
 $employees = $entries[2];
@@ -102,7 +41,15 @@ $json['hours_total_registered'] = $total;
 $json['hours_total_month']      = getActualWorkingHoursInRange($config,$employees,"month");
 $json['hours_until_today']      = getActualWorkingHoursInRange($config,$employees,null);
 $json['ranking']                = $ranking;
+$json['timestamp']              = date("Ymd H:i:s",time());
 
-echo json_encode($json);
+$encodedJson = json_encode($json);
 
+// cache the result
+if(!file_put_contents($cacheFile,$encodedJson))
+{
+  error_log('Failed writing to json cache file: ' . $cacheFile);
+}
+
+echo $encodedJson;
 ?>

@@ -111,4 +111,80 @@
       return $result;
   }
 
+  function getEntries($harvestAPI, $config) {
+
+    $dates = getDateRange();
+
+    $date_start = $dates['start'];
+    $date_end   = $dates['end'];
+
+    $range = new Harvest_Range(date('Ymd', $date_start), date('Ymd', $date_end));
+
+    $users = $harvestAPI->getActiveUsers();
+    $return = array();
+
+    $total_hours        = 0;
+    $workdays_in_range  = getWorkingDays(); // until today
+    $employees          = array();
+    $first_workday      = getFirstWorkDay($date_start, $date_end, "Ymd");
+
+    foreach ($users->data as $user) {
+
+      // ignore contractors, they do not play our game :-)
+      if($user->get("is-contractor") == "true")
+      {
+        continue;
+      }
+      
+      // ignore newly created users, this game will not be fair for them
+      if(date("Ymd",strtotime($user->get("created-at"))) > $first_workday)  // timestamp 2012-12-02T09:57:33Z
+      {
+        continue;
+      }
+
+      // this is a real user, count him in!
+      $employees[] = $user;
+
+      // determine optimal hours logged for this user
+      $hours_goal = $workdays_in_range * $config["working_hours_per_day"]["default"];
+      if(isset($config["working_hours_per_day"][$user->email]) && $config["working_hours_per_day"][$user->email] > 0) {
+        // we have a user defined daily working schedule
+         $hours_goal = $workdays_in_range * $config["working_hours_per_day"][$user->email];
+      }
+
+      $activity = $harvestAPI->getUserEntries($user->id, $range);
+      $hours_registered = 0;
+      
+      foreach ($activity->data as $entry) {
+        $hours_registered += $entry->hours;
+      }
+
+      // Getting user Harvest user id.
+      // Splitting it up to get retrieve Harvest avatar.
+      $user_id = strval($user->id);
+      $user_id = str_pad($user_id, 9, "0", STR_PAD_LEFT);
+
+      $user_id_parts = str_split($user_id, 3);
+      
+      $return[1][] = array(
+        'user_id_first_part' => (string)$user_id_parts[0],
+        'user_id_second_part' => (string)$user_id_parts[1],
+        'user_id_third_part' => (string)$user_id_parts[2],
+        'name' => $user->first_name, 
+        'hours_registered' => $hours_registered,  
+        'hours_goal' => $hours_goal,
+        'performance' => round($hours_registered/$hours_goal*100),
+        'group' => determineRankingGroup($hours_registered, $hours_goal)
+        );
+      $total_hours += $hours_registered;
+      
+    }
+    
+    $return[0] = round($total_hours);
+    $return[2] = $employees;
+    
+    return $return;
+    
+  }
+
 ?>
