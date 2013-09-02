@@ -127,7 +127,7 @@
 
             // Slacking!
             &.D-slacker {
-                &:after { content: "Slacking"; background: $red; }
+                &:after { content: "Y U NO WORK"; background: $red; }
                 .user_avatar:before { border-bottom-color: darken($red, 30%); }
 
                 // Rank icon
