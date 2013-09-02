@@ -18,6 +18,8 @@ $nextMonth  = strtotime(date('F',$dates['start']) . ' + 1 month');
 $nextYear   = strtotime(date('Y',$dates['start']) . ' + 1 month');
 $nextLink   = "?year=".date('Y',$nextYear)."&month=".date('F',$nextMonth);
 
+if($nextMonth > time()) { $nextLink = null; }
+
 $prevMonth  = strtotime(date('F',$dates['start']) . ' last month');
 $prevYear   = strtotime(date('Y',$dates['start']) . ' last month');
 $prevLink   = "?year=".date('Y',$prevYear)."&month=".date('F',$prevMonth);
@@ -59,7 +61,10 @@ $prevLink   = "?year=".date('Y',$prevYear)."&month=".date('F',$prevMonth);
             <p class="logged_hours_desc">
               <span>Timer er logget</span>
               <span>denne m&aring;ned</span>
-              <span class="date" year="<?php echo htmlspecialchars($year); ?>" month="<?php echo htmlspecialchars($month); ?>"><?php echo date('F Y', $dates['start']); ?> <a href='<?php echo $prevLink; ?>'>&lt;</a> <a href='<?php echo $nextLink; ?>'>&gt;</a></span>
+              <span class="date" year="<?php echo htmlspecialchars($year); ?>" month="<?php echo htmlspecialchars($month); ?>"><?php echo date('F Y', $dates['start']); ?> 
+                <?php if(!is_null($prevLink)): ?><a href='<?php echo $prevLink; ?>'>&lt;</a><?php endif; ?>
+                <?php if(!is_null($nextLink)): ?><a href='<?php echo $nextLink; ?>'>&gt;</a><?php endif; ?>
+              </span>
             </p>
           </div>
 
