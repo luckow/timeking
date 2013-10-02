@@ -34,8 +34,8 @@
   function getDateRange($period = null) {
 
     // default values
-    $date_start = strtotime('first day of this month');
-    $date_end   = strtotime("yesterday");
+    $date_start = strtotime('first day of this month 00:00:00'); // timestamp is needed for the first day of the month
+    $date_end   = strtotime("yesterday"); // will have H:i:s as 00:00:00
 
     // overruled by url?
     $dates = getDateFromURL();
